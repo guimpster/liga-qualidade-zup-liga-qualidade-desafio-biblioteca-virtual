@@ -1,21 +1,5 @@
 package br.com.zup.edu.ligaqualidade.desafiobiblioteca;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import org.junit.jupiter.api.Assertions;
-
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.modifique.Solucao;
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.DadosExemplar;
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.DadosLivro;
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.DadosUsuario;
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.TipoExemplar;
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.TipoUsuario;
-
 public class Main {
 
 	public static void main(String[] args) {

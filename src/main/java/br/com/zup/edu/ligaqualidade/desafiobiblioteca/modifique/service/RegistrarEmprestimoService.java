@@ -38,7 +38,6 @@ public class RegistrarEmprestimoService {
     	Collections.sort(listaEmprestimos);
     	
         for (DadosEmprestimo emprestimo : listaEmprestimos) {
-
             if (emprestimo.tempo > 60) {
                 continue;
             }
