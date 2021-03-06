@@ -93,7 +93,7 @@ public class Cenario6 {
 		DadosEmprestimo pedidoEmprestimo1 = new DadosEmprestimo(idLivro1,
 				usuario1.idUsuario, 10, TipoExemplar.LIVRE, 1);
 		DadosEmprestimo pedidoEmprestimo2 = new DadosEmprestimo(idLivro2,
-				usuario1.idUsuario, 10, TipoExemplar.LIVRE, 2);
+				usuario1.idUsuario, 20, TipoExemplar.LIVRE, 2);
 
 		Set<DadosEmprestimo> emprestimos = Set.of(pedidoEmprestimo1,
 				pedidoEmprestimo2);
@@ -123,8 +123,7 @@ public class Cenario6 {
 		List<LocalDate> datasPrevistasDevolucaoRetornadas = resultados.stream()
 				.map(r -> r.dataPrevistaDevolucao).collect(Collectors.toList());
 		LocalDate previsaoEntrega = hoje.plusDays(10);
-		List<LocalDate> datasPrevistasEsperadas = List.of(previsaoEntrega,
-				previsaoEntrega, previsaoEntrega);
+		List<LocalDate> datasPrevistasEsperadas = List.of(previsaoEntrega);
 		Assertions.assertEquals(datasPrevistasEsperadas,
 				datasPrevistasDevolucaoRetornadas);
 	}

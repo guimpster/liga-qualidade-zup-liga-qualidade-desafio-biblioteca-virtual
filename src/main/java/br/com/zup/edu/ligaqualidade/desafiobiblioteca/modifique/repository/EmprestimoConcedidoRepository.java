@@ -1,11 +1,11 @@
 package br.com.zup.edu.ligaqualidade.desafiobiblioteca.modifique.repository;
 
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.EmprestimoConcedido;
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.DadosExemplar;
-
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import br.com.zup.edu.ligaqualidade.desafiobiblioteca.EmprestimoConcedido;
 
 public class EmprestimoConcedidoRepository {
 
@@ -15,7 +15,7 @@ public class EmprestimoConcedidoRepository {
         emprestimosConcedidos = new HashSet<>();
     }
 
-    public void regitrar(EmprestimoConcedido emprestimoConcedido) {
+    public void registrar(EmprestimoConcedido emprestimoConcedido) {
         emprestimosConcedidos.add(emprestimoConcedido);
     }
 
@@ -28,9 +28,16 @@ public class EmprestimoConcedidoRepository {
     }
 
     public Set<Integer> getExemplaresComEmprestivoAtivos(Set<Integer> idsExemplares) {
-
         return emprestimosConcedidos.stream().filter(it ->
             !it.getMomentoDevolucao().isPresent() && idsExemplares.contains(it.idExemplar)
         ).map(it -> it.idExemplar).collect(Collectors.toSet());
+    }
+    
+    public boolean contemExemplaresExpirados(LocalDate dataParaSerConsideradaNaExpiracao, LocalDate momentoDevolucaoNovoEmprestimo) {
+    	return emprestimosConcedidos
+    			.parallelStream()
+    			.anyMatch(emprestimoConcedido ->
+    				emprestimoConcedido.dataPrevistaDevolucao.isBefore(dataParaSerConsideradaNaExpiracao) && !momentoDevolucaoNovoEmprestimo.equals(emprestimoConcedido.dataPrevistaDevolucao)
+    			);
     }
 }

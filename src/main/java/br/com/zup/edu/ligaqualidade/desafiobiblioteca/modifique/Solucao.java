@@ -46,7 +46,7 @@ public class Solucao {
         ExemplarRepository exemplarRepository = new ExemplarRepository(exemplares);
         EmprestimoConcedidoRepository emprestimoConcedidoRepository = new EmprestimoConcedidoRepository();
 
-        RegistrarEmprestimoService registrarEmprestimoService = new RegistrarEmprestimoService(usuarioRepository, exemplarRepository, emprestimoConcedidoRepository);
+        RegistrarEmprestimoService registrarEmprestimoService = new RegistrarEmprestimoService(usuarioRepository, exemplarRepository, emprestimoConcedidoRepository, dataParaSerConsideradaNaExpiracao);
         if (!emprestimos.isEmpty()) {
             registrarEmprestimoService.registrar(emprestimos);
         }
